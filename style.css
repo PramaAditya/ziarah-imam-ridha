@@ -145,7 +145,7 @@ table {
 }
 
 html {
-  font-size: 16px; /* Set the base font size */
+  font-size: 14px; /* Set the base font size */
 }
 
 h1,
@@ -200,6 +200,7 @@ hr {
 }
 doa {
   text-align: left;
+  display: block;
 }
 
 doa p {
@@ -209,19 +210,36 @@ doa p {
 doa p:nth-child(3n-2) {
   font-size: 1.1rem;
   font-weight: bold;
-  margin-top: 1rem;
+  margin-top: 1.9rem;
   margin-bottom: 0.5rem;
 }
 
 doa p:nth-child(3n-1) {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-style: italic;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 doa p:nth-child(3n) {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   margin-bottom: 1.3rem;
+}
+
+/* doa not first */
+doa:not(:last-child) {
+  border-bottom: 1px solid #ccc !important;
+  margin-bottom: 2rem;
+}
+
+.accordion > .content > .container > div {
+  display: block;
+  font-size: 1rem;
+  font-style: italic;
+  /* margin-top: 1rem; */
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+  /* padding-top: 1rem; */
 }
 
 doa.center {
@@ -250,7 +268,7 @@ doa.center p:nth-child(3) {
 }
 
 .accordion input[type="checkbox"]:checked ~ .content {
-  max-height: 500vh; /* Adjust the maximum height as needed */
+  max-height: 100000px; /* Adjust the maximum height as needed */
   transition: max-height 1s linear;
 }
 
@@ -272,6 +290,46 @@ doa.center p:nth-child(3) {
   position: sticky;
   top: 0;
   z-index: 10;
+}
+
+@media print {
+  html {
+    font-size: 15px;
+  }
+  .accordion input[type="checkbox"]:checked + label {
+    position: relative;
+  }
+  .accordion .content {
+    max-height: none;
+    overflow: visible;
+  }
+
+  body > .accordion > label {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .accordion label svg {
+    display: none;
+    page-break-before: avoid;
+    page-break-after: avoid;
+  }
+
+  doa p:nth-child(3n-2) {
+    font-size: 1rem;
+  }
+
+  doa p:nth-child(3n-1) {
+    font-size: 1.1rem;
+  }
+
+  doa p:nth-child(3n) {
+    font-size: 1rem;
+  }
+
+  .doa-group {
+    page-break-inside: avoid;
+  }
 }
 
 .accordion input[type="checkbox"]:checked + label > svg {
